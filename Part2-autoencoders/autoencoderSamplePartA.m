@@ -12,8 +12,8 @@ hiddenSize1 = 100;
 maxEpochs = 200;
 sparsityRegularization = 0.75;      % default: 1.00
 sparsityProportion = 0.04;          % default: 0.05
-encoderTransferFunction = 'satlin'; % default: logsig
-decoderTransferFunction = 'purelin'; % default: logsig
+encoderTransferFunction = 'logsig'; % default: logsig
+decoderTransferFunction = 'logsig'; % default: logsig
 
 randn('seed', 42);
 s = RandStream('mcg16807','Seed', 42);
@@ -29,7 +29,9 @@ autoenc1 = trainAutoencoder(dataTrainSubset, hiddenSize1, ...
 figure(), plotWeights(autoenc1);
 print('exp-f1','-dpng')
 
-reconstructed = predict(autoenc1, dataTestSubset);
+% reconstructed = predict(autoenc1, dataTestSubset);
+reconstructed = decode(autoenc1, encode(autoenc1, dataTestSubset));
+
 
 mseError = 0;
 for i = 1:numel(dataTestSubset)
