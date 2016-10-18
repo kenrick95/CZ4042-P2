@@ -3,6 +3,7 @@
 load 'dataTest.mat';
 load 'dataTrain.mat';
 
+% https://www.mathworks.com/help/nnet/examples/training-a-deep-neural-network-for-digit-classification.html
 %Take 100 samples for training and 20 for testing
 % dataTestSubset = dataTest(1, 1:20);
 % dataTrainSubset = dataTrain(1, 1:100);
@@ -10,9 +11,9 @@ load 'dataTrain.mat';
 hiddenSize1 = 100;
 hiddenSize2 = 50;
 
-maxEpochs = 500; % use 200
-sparsityRegularization = 1.00;      % default: 1.00
-sparsityProportion = 0.04;          % default: 0.05
+maxEpochs = 200; % use 200
+sparsityRegularization = 0.75;      % default: 1.00
+sparsityProportion = 0.45;          % default: 0.05
 encoderTransferFunction = 'logsig'; % default: logsig
 decoderTransferFunction = 'logsig'; % default: logsig
 
