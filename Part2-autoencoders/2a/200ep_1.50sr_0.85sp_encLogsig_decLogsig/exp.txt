@@ -1,0 +1,1 @@
+maxEpochs:   200, sparsityRegularization: 1.500, sparsityProportion: 0.850, mseError: 4.5598380790e+02, encoderTransferFunction: logsig, decoderTransferFunction: logsig

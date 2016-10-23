@@ -5,8 +5,8 @@ load 'dataTrain.mat';
 
 % https://www.mathworks.com/help/nnet/examples/training-a-deep-neural-network-for-digit-classification.html
 %Take 100 samples for training and 20 for testing
-% dataTestSubset = dataTest(1, 1:20);
-% dataTrainSubset = dataTrain(1, 1:100);
+% dataTest = dataTest(1, 1:20);
+% dataTrain = dataTrain(1, 1:100);
 
 hiddenSize1 = 100;
 hiddenSize2 = 50;
@@ -21,7 +21,7 @@ randn('seed', 42);
 s = RandStream('mcg16807','Seed', 42);
 RandStream.setGlobalStream(s);
 
-autoenc1 = trainAutoencoder(dataTrainSubset, hiddenSize1, ...
+autoenc1 = trainAutoencoder(dataTrain, hiddenSize1, ...
     'MaxEpochs', maxEpochs, ...
     'SparsityRegularization', sparsityRegularization, ...
     'SparsityProportion', sparsityProportion, ...
@@ -32,7 +32,7 @@ figure(), plotWeights(autoenc1);
 print('exp-f1','-dpng')
 
 
-feat1 = encode(autoenc1, dataTrainSubset);
+feat1 = encode(autoenc1, dataTrain);
 autoenc2 = trainAutoencoder(feat1, hiddenSize2, ...
     'MaxEpochs', maxEpochs, ...
     'SparsityRegularization', sparsityRegularization, ...
@@ -44,11 +44,11 @@ feat2 = encode(autoenc2, feat1);
 figure(), plotWeights(autoenc2);
 print('exp-f1-ly2','-dpng')
 
-reconstructed = decode(autoenc1, decode(autoenc2, encode(autoenc2, encode(autoenc1, dataTestSubset))));
+reconstructed = decode(autoenc1, decode(autoenc2, encode(autoenc2, encode(autoenc1, dataTest))));
 
 mseError = 0;
-for i = 1:numel(dataTestSubset)
-    mseError = mseError + mse(double(dataTestSubset{1, i}) - reconstructed{1, i});
+for i = 1:numel(dataTest)
+    mseError = mseError + mse(double(dataTest{1, i}) - reconstructed{1, i});
 end
 
 mseError = mseError/i;
@@ -66,7 +66,7 @@ fclose(fileID);
 figure;
 for i = 1:20
     subplot(4,5,i);
-    imshow(dataTestSubset{i});
+    imshow(dataTest{i});
 end
 print('exp-f2','-dpng')
 

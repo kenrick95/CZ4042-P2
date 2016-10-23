@@ -1,0 +1,1 @@
+maxEpochs:  1000, sparsityRegularization: 1.500, sparsityProportion: 0.040, mseError: 1.7471331658e+03, encoderTransferFunction: satlin, decoderTransferFunction: purelin
