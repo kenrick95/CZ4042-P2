@@ -9,11 +9,11 @@ load 'dataTrain.mat';
 
 hiddenSize1 = 100;
 
-maxEpochs = 1000;
-sparsityRegularization = 1.50;      % default: 1.00, best 1.50
-sparsityProportion = 0.04;          % default: 0.05, best 0.04
-encoderTransferFunction = 'logsig'; % default: logsig
-decoderTransferFunction = 'purelin'; % default: logsig
+maxEpochs = 1000;                   % default: 10000,   best: 1000
+sparsityRegularization = 1.50;      % default: 1.00,    best: 1.50
+sparsityProportion = 0.04;          % default: 0.05,    best: 0.04
+encoderTransferFunction = 'logsig'; % default: logsig,  best: logsig
+decoderTransferFunction = 'logsig'; % default: logsig,  best: logsig
 
 randn('seed', 42);
 s = RandStream('mcg16807','Seed', 42);

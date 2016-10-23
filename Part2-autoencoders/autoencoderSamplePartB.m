@@ -10,11 +10,11 @@ load 'dataTrain.mat';
 hiddenSize1 = 100;
 hiddenSize2 = 50;
 
-maxEpochs = 200; % use 200
-sparsityRegularization = 0.75;      % default: 1.00
-sparsityProportion = 0.45;          % default: 0.05
-encoderTransferFunction = 'logsig'; % default: logsig
-decoderTransferFunction = 'logsig'; % default: logsig
+maxEpochs = 200;                    % default: 10000,   best: 200
+sparsityRegularization = 0.25;      % default: 1.00,    best: 1.50
+sparsityProportion = 0.04;          % default: 0.05,    best: 0.04
+encoderTransferFunction = 'logsig'; % default: logsig,  best: logsig
+decoderTransferFunction = 'logsig'; % default: logsig,  best: logsig
 
 randn('seed', 42);
 s = RandStream('mcg16807','Seed', 42);
@@ -26,6 +26,7 @@ autoenc1 = trainAutoencoder(dataTrain, hiddenSize1, ...
     'SparsityProportion', sparsityProportion, ...
     'EncoderTransferFunction', encoderTransferFunction, ...
     'DecoderTransferFunction', decoderTransferFunction);
+save('autoenc1.mat', 'autoenc1');
 
 figure(), plotWeights(autoenc1);
 print('exp-f1','-dpng')
@@ -38,16 +39,17 @@ autoenc2 = trainAutoencoder(feat1, hiddenSize2, ...
     'SparsityProportion', sparsityProportion, ...
     'EncoderTransferFunction', encoderTransferFunction, ...
     'DecoderTransferFunction', decoderTransferFunction);
+save('autoenc2.mat', 'autoenc2');
 feat2 = encode(autoenc2, feat1);
 
 figure(), plotWeights(autoenc2);
 print('exp-f1-ly2','-dpng')
 
-reconstructed = decode(autoenc1, decode(autoenc2, encode(autoenc2, encode(autoenc1, dataTestSubset))));
+reconstructed = decode(autoenc1, decode(autoenc2, encode(autoenc2, encode(autoenc1, dataTest))));
 
 mseError = 0;
-for i = 1:numel(dataTestSubset)
-    mseError = mseError + mse(double(dataTestSubset{1, i}) - reconstructed{1, i});
+for i = 1:numel(dataTest)
+    mseError = mseError + mse(double(dataTest{1, i}) - reconstructed{1, i});
 end
 
 mseError = mseError/i;
@@ -65,7 +67,7 @@ fclose(fileID);
 figure;
 for i = 1:20
     subplot(4,5,i);
-    imshow(dataTestSubset{i});
+    imshow(dataTest{i});
 end
 print('exp-f2','-dpng')
 
