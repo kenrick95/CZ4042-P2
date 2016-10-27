@@ -1,0 +1,1 @@
+[enc2_layers: 50; enc2_layers: 50];maxEpochs: [  100   150   100],sparsityRegularization: 1.000,sparsityProportion: 0.150,backpropagation: 1,mseError: 1.6823297992e+06,accuracy: 9.3000000000e-01,encoderTransferFunction: satlin, decoderTransferFunction: satlin

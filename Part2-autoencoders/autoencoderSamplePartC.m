@@ -5,18 +5,18 @@ load 'dataTrain.mat';
 load 'labelsTrain.mat';
 load 'labelsTest.mat';
 
-hiddenSize1 = 100;
-hiddenSize2 = 50;
+hiddenSize1 = 500;
+hiddenSize2 = 500;
 
 maxEpochs1 = 100;                   % max 200
-maxEpochs2 = 200;                   % max 200
-maxEpochs3 = 150;                   % max 200
+maxEpochs2 = 150;                   % max 200
+maxEpochs3 = 100;                   % max 200
 sparsityRegularization = 1.00;      % default: 1.00; 1 .. 10
 sparsityProportion = 0.15;          % default: 0.05; 0.1 .. 0.3
 encoderTransferFunction = 'logsig'; % default: logsig; use logsig
 decoderTransferFunction = 'logsig'; % default: logsig; use logsig
 useGpu = false;
-backprop = true;
+backprop = false;
 
 randn('seed', 42);
 s = RandStream('mcg16807','Seed', 42);
@@ -94,7 +94,7 @@ fprintf(fileID, strcat('[enc2_layers: %d; enc2_layers: %d];', ...
     'maxEpochs: [%5d %5d %5d], ', ...
     'sparsityRegularization: %5.3f, ', ...
     'sparsityProportion: %5.3f, ', ...
-    'backpropagation: %s, ', ...
+    'backpropagation: %i, ', ...
     'mseError: %5.10e, ', ...
     'accuracy: %5.10e, ', ...
     'encoderTransferFunction: %s, decoderTransferFunction: %s\r\n'), ...
