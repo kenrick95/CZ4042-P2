@@ -5,3 +5,7 @@ Part1-cnn/l2rs-*.mat
 Part1-cnn/mmts-*.mat
 Part1-cnn/dataTeststore.mat
 Part1-cnn/dataTrainstore.mat
+Part1-cnn/conv1size-*.mat
+Part1-cnn/conv2size-*.mat
+Part1-cnn/part2-best.mat
+Part1-cnn/best.mat
