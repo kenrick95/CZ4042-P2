@@ -116,3 +116,14 @@ for i=1:numel(mmts)
     
     save(filename, 'convnet');
 end
+
+convnet = trainNetwork(dataTrainstore,layers,bestOptions);
+
+YTest = classify(convnet, dataTeststore);
+TTest = dataTeststore.Labels;
+accuracy = sum(YTest == TTest)/numel(YTest);
+
+filename=sprintf('best.mat');
+fprintf('%s %.6f\n', filename, accuracy);
+
+save(filename, 'convnet');
