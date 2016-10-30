@@ -1,3 +1,7 @@
-Part1-cnn/*-run_*
+*.asv
+Part1-cnn/lrs-*.mat
+Part1-cnn/mbss-*.mat
+Part1-cnn/l2rs-*.mat
+Part1-cnn/mmts-*.mat
 Part1-cnn/dataTeststore.mat
 Part1-cnn/dataTrainstore.mat
