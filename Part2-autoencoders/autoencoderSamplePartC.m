@@ -6,14 +6,14 @@ load 'labelsTrain.mat';
 load 'labelsTest.mat';
 
 hiddenSize1 = 500;
-hiddenSize2 = 450;
+hiddenSize2 = 500;
 
 maxEpochs1 = 100;                   % max 200
 maxEpochs2 = 150;                   % max 200
 maxEpochs3 = 100;                   % max 200
-sparsityRegularization1 = 5.00;      % default: 1.00; 1 .. 10
+sparsityRegularization1 = 1.00;      % default: 1.00; 1 .. 10
 sparsityRegularization2 = 1.00;      % default: 1.00; 1 .. 10
-sparsityProportion1 = 0.20;          % default: 0.05; 0.1 .. 0.3
+sparsityProportion1 = 0.15;          % default: 0.05; 0.1 .. 0.3
 sparsityProportion2 = 0.15;          % default: 0.05; 0.1 .. 0.3
 encoderTransferFunction = 'logsig'; % default: logsig; use logsig
 decoderTransferFunction = 'logsig'; % default: logsig; use logsig
