@@ -10,6 +10,9 @@ for i=1:numel(num_layers)
     acc(i) = sum(YTest == TTest)/numel(YTest);
 end
 plot(num_layers,acc,'-o');
+xlabel('Conv_layer1 size', 'fontsize', 14, 'Interpreter', 'None');
+ylabel('Accuracy', 'fontsize', 14);
+set(gca, 'fontsize', 14);
 xticks(20:10:70);
 disp('Press any key to continue.');
 pause;
@@ -24,4 +27,7 @@ for i=1:numel(num_layers)
     acc(i) = sum(YTest == TTest)/numel(YTest);
 end
 plot(num_layers,acc,'-o');
+xlabel('Conv_layer2 size', 'fontsize', 14, 'Interpreter', 'None');
+ylabel('Accuracy', 'fontsize', 14);
+set(gca, 'fontsize', 14);
 xticks(20:10:70);

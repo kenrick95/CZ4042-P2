@@ -15,6 +15,9 @@ for i=1:numel(lrs)
     acc(i) = sum(YTest == TTest)/numel(YTest);
 end
 bar(acc);
+xlabel('Learning rate', 'fontsize', 14);
+ylabel('Accuracy', 'fontsize', 14);
+set(gca, 'fontsize', 14);
 xlim([0 numel(lrs)+1]);
 xticks(1:numel(lrs));
 xticklabels(arrayfun(@(n)(num2str(n,'%.1e')), lrs, 'UniformOutput', false));
@@ -31,6 +34,9 @@ for i=1:numel(mbss)
     acc(i) = sum(YTest == TTest)/numel(YTest);
 end
 plot(mbss, acc, 'o-');
+xlabel('Mini-batch size', 'fontsize', 14);
+ylabel('Accuracy', 'fontsize', 14);
+set(gca, 'fontsize', 14);
 disp('Press any key to continue.');
 pause;
 
@@ -44,6 +50,9 @@ for i=1:numel(l2rs)
     acc(i) = sum(YTest == TTest)/numel(YTest);
 end
 bar(acc);
+xlabel('L2 regularization', 'fontsize', 14);
+ylabel('Accuracy', 'fontsize', 14);
+set(gca, 'fontsize', 14);
 ymin=0.86;
 ymax=0.89;
 ylim([ymin ymax]);
@@ -63,3 +72,6 @@ for i=1:numel(mmts)
     acc(i) = sum(YTest == TTest)/numel(YTest);
 end
 plot(mmts, acc, 'o-');
+xlabel('Momentum', 'fontsize', 14);
+ylabel('Accuracy', 'fontsize', 14);
+set(gca, 'fontsize', 14);
