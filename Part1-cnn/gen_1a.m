@@ -44,6 +44,9 @@ for i=1:numel(l2rs)
     acc(i) = sum(YTest == TTest)/numel(YTest);
 end
 bar(acc);
+ymin=0.86;
+ymax=0.89;
+ylim([ymin ymax]);
 xlim([0 numel(l2rs)+1]);
 xticks(1:numel(l2rs));
 xticklabels(arrayfun(@(n)(num2str(n,'%.1e')), l2rs, 'UniformOutput', false));
