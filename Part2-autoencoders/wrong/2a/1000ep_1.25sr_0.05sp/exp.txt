@@ -1,1 +1,0 @@
-maxEpochs:  1000, sparsityRegularization: 1.250, sparsityProportion: 0.050, mseError: 1.8495705426e+03

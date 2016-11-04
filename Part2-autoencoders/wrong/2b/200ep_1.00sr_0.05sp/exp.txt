@@ -1,1 +1,0 @@
-[enc2_layers: 100; enc2_layers: 50]; maxEpochs:   200, sparsityRegularization: 1.000, sparsityProportion: 0.050, mseError: 2.5068560077e+03, encoderTransferFunction: logsig, decoderTransferFunction: logsig
